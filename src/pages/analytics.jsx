@@ -7,7 +7,7 @@ import CreditScoreChart from "@/components/analytics/credit-score-chart";
 import AnalyticsHeader from "@/components/analytics/analytics-header";
 import AnalyticsStatsGrid from "@/components/analytics/analytics-stats-grid";
 import ConsumptionsByColmadoChart from "@/components/analytics/consumptions-by-colmado-chart";
-import CreditStatusDistributionChart from "@/components/analytics/credit-status-distribution-chart";
+
 
 const AnalyticsPage = ({ credits: initialCredits, consumptions: initialConsumptions }) => {
   const [credits, setCredits] = useState(initialCredits || []);
@@ -68,7 +68,7 @@ const AnalyticsPage = ({ credits: initialCredits, consumptions: initialConsumpti
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <CreditStatusDistributionChart credits={credits} />
+       
         <CreditScoreChart data={creditScoreHistoryData} />
       </div>
     </div>
