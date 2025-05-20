@@ -1,8 +1,10 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+import { defineConfig } from "vite";
+
+export default defineConfig({
   content: [
     "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -35,4 +37,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+});
