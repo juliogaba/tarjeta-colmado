@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { DollarSign, Users, Percent } from "lucide-react";
 import CreditChart from "@/components/analytics/credit-chart";
 import CreditScoreChart from "@/components/analytics/credit-score-chart";
-import AnalyticsHeader from "@/components/analytics/analytics-header";
+import AnalyticsHeader from "@/components/analytics/analytics-header.jsx";
 import AnalyticsStatsGrid from "@/components/analytics/analytics-stats-grid";
 import ConsumptionsByColmadoChart from "@/components/analytics/consumptions-by-colmado-chart";
 
