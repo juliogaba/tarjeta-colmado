@@ -1,9 +1,7 @@
+{credit.nextPaymentDate && !isNaN(new Date(credit.nextPaymentDate))
+  ? new Date(credit.nextPaymentDate).toLocaleDateString()
+  : "N/A"}
 
-import React from "react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
 
 const DashboardLists = ({ credits, consumptions }) => {
   return (

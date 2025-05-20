@@ -1,8 +1,13 @@
+<p className="text-sm text-gray-500">
+  {cons.paymentDate || cons.createdAt
+    ? new Date(cons.paymentDate || cons.createdAt).toLocaleDateString('es-DO', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })
+    : "Sin fecha"}
+</p>
 
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Printer, ShoppingBag } from "lucide-react";
 
 const RecentConsumptions = ({ consumptions, onPrintSimpleReceipt }) => {
   const recentConsumptions = consumptions.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0,10);

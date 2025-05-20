@@ -1,7 +1,9 @@
 
-import React from "react";
-import StatsCard from "@/components/dashboard/stats-card";
-import { CreditCard, ShoppingBag, TrendingUp, Calendar, Store } from "lucide-react";
+description={
+  upcomingPaymentDate && !isNaN(new Date(upcomingPaymentDate))
+    ? new Date(upcomingPaymentDate).toLocaleDateString()
+    : "Sin pagos próximos"
+}
 
 const DashboardStatsGrid = ({ totalDebt, totalConsumed, activeCredits, upcomingPaymentAmount, upcomingPaymentDate, fourthCardData }) => {
   return (

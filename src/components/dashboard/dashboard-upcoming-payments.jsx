@@ -1,7 +1,9 @@
 
-import React from "react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Calendar } from "lucide-react";
+<p>
+  Fecha: {credit.nextPaymentDate && !isNaN(new Date(credit.nextPaymentDate))
+    ? new Date(credit.nextPaymentDate).toLocaleDateString()
+    : "Fecha no disponible"}
+</p>
 
 const DashboardUpcomingPayments = ({ upcomingPayments }) => {
   return (
