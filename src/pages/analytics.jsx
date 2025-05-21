@@ -10,6 +10,9 @@ import ConsumptionsByColmadoChart from "@/components/analytics/consumptions-by-c
 const AnalyticsPage = ({ credits: initialCredits, consumptions: initialConsumptions }) => {
   const [credits, setCredits] = useState(initialCredits || []);
   const [consumptions, setConsumptions] = useState(initialConsumptions || []);
+  const sanitizedCredits = credits.filter(c => c && typeof c.amount === "number" && c.amount >= 0);
+const sanitizedConsumptions = consumptions.filter(c => c && typeof c.amount === "number" && c.amount >= 0);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -86,8 +89,9 @@ const AnalyticsPage = ({ credits: initialCredits, consumptions: initialConsumpti
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <CreditChart data={credits} />
-        <ConsumptionsByColmadoChart consumptions={consumptions} credits={credits} />
+        <CreditChart data={sanitizedCredits} />
+<ConsumptionsByColmadoChart consumptions={sanitizedConsumptions} credits={sanitizedCredits} />
+
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

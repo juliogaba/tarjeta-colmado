@@ -1,10 +1,17 @@
-
-import React from "react";
-import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-
 const CreditChart = ({ data, title, description, color = "#3b82f6" }) => {
+  if (!Array.isArray(data) || data.length === 0) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>{title || "Sin datos"}</CardTitle>
+        </CardHeader>
+        <CardContent className="p-4 text-center text-sm text-gray-500">
+          No hay datos suficientes para mostrar el gráfico.
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -31,11 +38,16 @@ const CreditChart = ({ data, title, description, color = "#3b82f6" }) => {
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                 <XAxis 
-                  dataKey="name" 
-                  tick={{ fontSize: 12 }}
-                  tickLine={false}
-                  axisLine={{ stroke: "#e5e7eb" }}
-                />
+  dataKey="name"
+  tickFormatter={(value) => {
+    const date = new Date(value);
+    return !isNaN(date.getTime()) ? date.toLocaleDateString('es-DO', { month: 'short', day: 'numeric' }) : value;
+  }}
+  tick={{ fontSize: 12 }}
+  tickLine={false}
+  axisLine={{ stroke: "#e5e7eb" }}
+/>
+
                 <YAxis 
                   tick={{ fontSize: 12 }}
                   tickLine={false}
@@ -43,7 +55,7 @@ const CreditChart = ({ data, title, description, color = "#3b82f6" }) => {
                   tickFormatter={(value) => `$${value}`}
                 />
                 <Tooltip 
-                  formatter={(value) => [`$${value.toLocaleString()}`, "Valor"]}
+                  formatter={(value) => [`$${value?.toLocaleString?.() || value}`, "Valor"]}
                   contentStyle={{
                     backgroundColor: "white",
                     border: "1px solid #e5e7eb",
@@ -66,5 +78,3 @@ const CreditChart = ({ data, title, description, color = "#3b82f6" }) => {
     </motion.div>
   );
 };
-
-export default CreditChart;

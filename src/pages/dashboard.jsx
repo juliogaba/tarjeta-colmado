@@ -40,8 +40,17 @@ const Dashboard = ({ credits: initialCredits, consumptions: initialConsumptions 
   
   const currentDate = new Date();
   const upcomingPaymentsList = credits
-    .filter(credit => credit.nextPaymentDate && new Date(credit.nextPaymentDate) > currentDate && credit.status === "Activo")
-    .sort((a, b) => new Date(a.nextPaymentDate) - new Date(b.nextPaymentDate))
+    .filter(credit => {
+  const date = new Date(credit.nextPaymentDate);
+  return credit.nextPaymentDate && !isNaN(date) && date > currentDate && credit.status === "Activo";
+})
+
+    .sort((a, b) => {
+  const dateA = new Date(a.nextPaymentDate);
+  const dateB = new Date(b.nextPaymentDate);
+  return (!isNaN(dateA) && !isNaN(dateB)) ? dateA - dateB : 0;
+})
+
     .slice(0, 5);
 
   const globalCreditHealth = Math.max(300, Math.min(850, 850 - (totalDebt / (totalCreditLimit || 1)) * 200)); 

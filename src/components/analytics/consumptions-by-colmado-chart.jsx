@@ -7,7 +7,8 @@ import { motion } from "framer-motion";
 const ConsumptionsByColmadoChart = ({ consumptions, credits }) => {
   const consumptionsByColmado = consumptions.reduce((acc, curr) => {
     const colmadoName = curr.colmadoName || credits.find(c => c.id === curr.creditId)?.colmadoName || "Desconocido";
-    acc[colmadoName] = (acc[colmadoName] || 0) + curr.amount;
+    acc[colmadoName] = (acc[colmadoName] || 0) + (Number(curr.amount) || 0);
+
     return acc;
   }, {});
 

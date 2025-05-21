@@ -43,8 +43,9 @@ const PaymentsPage = ({ consumptions: initialConsumptions }) => {
   });
 
   const sortedConsumptions = [...filteredConsumptions].sort((a, b) => {
-    const dateA = new Date(a.paymentDate);
-    const dateB = new Date(b.paymentDate);
+    const dateA = a.paymentDate && !isNaN(new Date(a.paymentDate)) ? new Date(a.paymentDate) : new Date(0);
+const dateB = b.paymentDate && !isNaN(new Date(b.paymentDate)) ? new Date(b.paymentDate) : new Date(0);
+
     return sortOrder === "desc" ? dateB - dateA : dateA - dateB;
   });
 
@@ -54,7 +55,8 @@ const PaymentsPage = ({ consumptions: initialConsumptions }) => {
   const currentYear = new Date().getFullYear();
   
   const consumedThisMonth = consumptions.reduce((sum, cons) => {
-    const consDate = new Date(cons.paymentDate);
+    const consDate = cons.paymentDate && !isNaN(new Date(cons.paymentDate)) ? new Date(cons.paymentDate) : new Date(0);
+
     return (
       cons.status === "Realizado" &&
       consDate.getMonth() === currentMonth &&
