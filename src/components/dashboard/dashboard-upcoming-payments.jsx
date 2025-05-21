@@ -20,15 +20,19 @@ const DashboardUpcomingPayments = ({ upcomingPayments }) => {
                 <div className="flex items-start">
                   <Calendar className="h-5 w-5 mr-3 text-blue-500 mt-0.5" />
                   <div>
-                    <p className="font-medium">{credit.name}</p>
-                    <p className="text-sm text-gray-500">
-                      Fecha: {new Date(credit.nextPaymentDate).toLocaleDateString()}
-                    </p>
+                   <p className="text-sm text-gray-500">
+  Fecha: {credit.nextPaymentDate && !isNaN(new Date(credit.nextPaymentDate))
+    ? new Date(credit.nextPaymentDate).toLocaleDateString()
+    : "Fecha no disponible"}
+</p>
+
                   </div>
                 </div>
                 <div className="text-right">
                   <p className="text-sm text-gray-500">Monto / Saldo</p>
-                  <p className="text-lg font-bold text-blue-600">${credit.nextPaymentAmount.toLocaleString()}</p>
+                  <p className="text-lg font-bold text-blue-600">
+  ${credit.nextPaymentAmount ? credit.nextPaymentAmount.toLocaleString() : '0.00'}
+</p>
                 </div>
               </div>
             ))}
