@@ -1,12 +1,3 @@
-<p className="text-sm text-gray-500">
-  {cons.paymentDate || cons.createdAt
-    ? new Date(cons.paymentDate || cons.createdAt).toLocaleDateString('es-DO', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      })
-    : "Sin fecha"}
-</p>
 
 
 const RecentConsumptions = ({ consumptions, onPrintSimpleReceipt }) => {
