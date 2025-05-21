@@ -1,6 +1,9 @@
-{credit.nextPaymentDate && !isNaN(new Date(credit.nextPaymentDate))
-  ? new Date(credit.nextPaymentDate).toLocaleDateString()
-  : "N/A"}
+<p className="font-medium">
+  {credit.nextPaymentDate && !isNaN(new Date(credit.nextPaymentDate))
+    ? new Date(credit.nextPaymentDate).toLocaleDateString()
+    : 'N/A'}
+</p>
+
 
 
 const DashboardLists = ({ credits, consumptions }) => {
