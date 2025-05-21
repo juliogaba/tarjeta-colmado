@@ -47,10 +47,11 @@ const DashboardStatsGrid = ({ totalDebt, totalConsumed, activeCredits, upcomingP
   value={upcomingPaymentAmount > 0 ? `$${upcomingPaymentAmount.toLocaleString()}` : "N/A"}
   icon={<Calendar className="h-5 w-5" />}
   description={
-    upcomingPaymentDate && !isNaN(new Date(upcomingPaymentDate))
-      ? new Date(upcomingPaymentDate).toLocaleDateString()
-      : "Sin pagos próximos"
-  }
+  upcomingPaymentDate && !isNaN(new Date(upcomingPaymentDate))
+    ? new Date(upcomingPaymentDate).toLocaleDateString()
+    : "Sin pagos próximos"
+}
+
   trend={0}
   color="yellow"
 />
