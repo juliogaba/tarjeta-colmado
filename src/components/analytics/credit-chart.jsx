@@ -77,4 +77,4 @@ const CreditChart = ({ data, title, description, color = "#3b82f6" }) => {
       </Card>
     </motion.div>
   );
-};
+};export default CreditChart;
